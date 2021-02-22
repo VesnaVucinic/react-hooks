@@ -33,9 +33,22 @@ const App = () => {
   // http:/numbersapi.com/43/trivia
   const { data, loading } =   useFetch('http:/numbersapi.com/43/trivia')
 
+
+  const [count, setCount] = useState(0);
+
+  // we now have singl value but JSON.parse works for objects in case we need, 
+  // when we use initializer function of useState we dont call JSON.parse(localeStorage.getItem("count") every single render
+  // const [count, setCount] = useState(JSON.parse(localeStorage.getItem("count")));
+  // JSON.stringyfy(count) if I waqnt to set count as something else not number
+  // useEffect(() => {
+  //   localeStorage.setItem("count", JSON.stringyfy(count));
+  // }, [count])
+
   return (
     <div className="App">
       <div>{loading ? 'loading...' : data }</div>
+      <div>count: {count}</div>
+      <button onClick={() => setCount(c => c + 1)}>increment</button><br/>
       {/* <button onClick={() => setShowHello(!showHello)}>toggle</button>
       {showHello && <Hello/>} */}
       <input name='email'value={values.email}  onChange={handleChange}/>
