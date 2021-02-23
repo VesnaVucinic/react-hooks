@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import useForm from './useForm.js'
 import useFetch from './useFetch';
 // import Hello from './Hello.js'
+import Search from './Search'
 
 const App = () => {
   const [values, handleChange] = useForm({ email: '', password: ''});
@@ -46,6 +47,7 @@ const App = () => {
 
   return (
     <div className="App">
+      <Search/>
       <div>{loading ? 'loading...' : data }</div>
       <div>count: {count}</div>
       <button onClick={() => setCount(c => c + 1)}>increment</button><br/>
